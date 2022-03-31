@@ -1,0 +1,28 @@
+{
+  "name": "ginocorpsocialnetwork",
+  "version": "1.0.0",
+  "description": "Social Network API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "server": "node server.js",
+    "seed": "node seeding/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ginocorp/ginocorp-socialnetwork.git"
+  },
+  "author": "Gino Colman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ginocorp/ginocorp-socialnetwork/issues"
+  },
+  "homepage": "https://github.com/ginocorp/ginocorp-socialnetwork#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.9",
+    "nodemon": "^2.0.15"
+  }
+}
