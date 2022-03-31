@@ -1,24 +1,24 @@
 const dotenv = require("dotenv");
 const connection = require("../config/connection");
-const { User, Thought } = require("../models");
-const { userData, thoughtData } = require("./seeding");
+const { User, Thoughts } = require("../models");
+const { userData, thoughtSeeds } = require("./seeding");
 
 const seedThoughts = async () => {
-    for (const thought of thoughtData) {
-        const newThought = await Thought.create(thought);
+    for (const thought of thoughtSeeds) {
+        const createThought = await Thoughts.create(thought);
         await User.findOneAndUpdate(
-            { username: newThought.username },
-            { $push: { thoughts: newThought._id } }
+            { username: createThought.username },
+            { $push: { thoughts: createThought._id } }
         );
     }
 };
 
 const seedFriendList = async () => {
-    const friends = await User.find({}).select("_id");
-    for (const id of friends) {
+    const friend = await User.find({}).select("_id");
+    for (const id of friend) {
         await User.findOneAndUpdate(
             { _id: id },
-            { $push: { friends: friends.filter(friend => friend !== id) } }
+            { $push: { friends: friend.filter(friend => friend !== id) } }
         );
     }
 };
